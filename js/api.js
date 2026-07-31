@@ -13,3 +13,44 @@ export const translations = {
   es: { brandAria: "Inicio de CineNova", languageButton: "EN", favoritesSingular: "favorita", favoritesPlural: "favoritas", heroEyebrow: "Cartelera seleccionada", pageTitle: "Encuentra tu próxima película", heroText: "Explora películas por género, guarda tus favoritas y abre cada ficha para ver más detalles.", catalogAria: "Catálogo de películas", genresLabel: "Géneros", catalogTitle: "Películas destacadas", searchPlaceholder: "Buscar película...", searchAria: "Buscar película", searchButton: "Buscar", filtersAria: "Filtros por género", loading: "Cargando películas...", noResults: "No se encontraron películas con esos filtros.", likeAria: "Me gusta", posterAlt: "Poster de", addFavorite: "Agregar a favoritas", removeFavorite: "Quitar de favoritas", closeModal: "Cerrar modal", closeFavorites: "Cerrar favoritos", favoritesEyebrow: "Tus selecciones", favoritesTitle: "Películas favoritas", noFavorites: "Todavía no seleccionaste películas favoritas.", remove: "Quitar", genres: { all: "Todas", sciFi: "Ciencia ficción", animation: "Animación", action: "Acción", drama: "Drama", comedy: "Comedia", horror: "Terror" } },
   en: { brandAria: "CineNova home", languageButton: "ES", favoritesSingular: "favorite", favoritesPlural: "favorites", heroEyebrow: "Selected lineup", pageTitle: "Find your next movie", heroText: "Browse movies by genre, save your favorites, and open each card to see more details.", catalogAria: "Movie catalog", genresLabel: "Genres", catalogTitle: "Featured movies", searchPlaceholder: "Search movie...", searchAria: "Search movie", searchButton: "Search", filtersAria: "Genre filters", loading: "Loading movies...", noResults: "No movies were found with those filters.", likeAria: "Like", posterAlt: "Poster for", addFavorite: "Add to favorites", removeFavorite: "Remove from favorites", closeModal: "Close modal", closeFavorites: "Close favorites", favoritesEyebrow: "Your picks", favoritesTitle: "Favorite movies", noFavorites: "You have not selected favorite movies yet.", remove: "Remove", genres: { all: "All", sciFi: "Science fiction", animation: "Animation", action: "Action", drama: "Drama", comedy: "Comedy", horror: "Horror" } },
 };
+
+/** Simula una consulta exitosa del catálogo de películas. */
+export function obtenerPeliculas() {
+  return new Promise((resolve) => {
+    window.setTimeout(() => resolve(movies), 500);
+  });
+}
+
+/** Simula una consulta de reseñas que puede no estar disponible. */
+export function obtenerResenas() {
+  return new Promise((resolve, reject) => {
+    window.setTimeout(() => {
+      if (Math.random() < 0.5) {
+        reject(new Error("No fue posible obtener las reseñas."));
+        return;
+      }
+
+      resolve([
+        { id: 1, peliculaId: 1, autor: "Ana", texto: "Una experiencia visual impresionante." },
+        { id: 2, peliculaId: 3, autor: "Luis", texto: "Acción intensa de principio a fin." },
+      ]);
+    }, 600);
+  });
+}
+
+/** Simula una consulta de anuncios que puede no estar disponible. */
+export function obtenerAnuncios() {
+  return new Promise((resolve, reject) => {
+    window.setTimeout(() => {
+      if (Math.random() < 0.5) {
+        reject(new Error("No fue posible obtener los anuncios."));
+        return;
+      }
+
+      resolve([
+        { id: 1, titulo: "Estreno de la semana", mensaje: "Descubre las novedades en cartelera." },
+        { id: 2, titulo: "Tus favoritas", mensaje: "Guarda películas para verlas después." },
+      ]);
+    }, 700);
+  });
+}
