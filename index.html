@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineNova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" id="brandLink" href="#" aria-label="Inicio de CineNova">
+        <span class="brand-mark">CN</span>
+        <span>CineNova</span>
+      </a>
+      <div class="topbar-actions">
+        <button class="language-toggle" id="languageToggle" type="button">EN</button>
+        <button class="liked-counter" id="likedCounter" type="button">0 favoritas</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="pageTitle">
+        <div class="hero-content">
+          <p class="eyebrow" id="heroEyebrow">Cartelera seleccionada</p>
+          <h1 id="pageTitle">Encuentra tu próxima película</h1>
+          <p id="heroText">
+            Explora películas por género, guarda tus favoritas y abre cada ficha
+            para ver más detalles.
+          </p>
+        </div>
+      </section>
+
+      <section class="catalog" id="catalogSection" aria-label="Catálogo de películas">
+        <div class="catalog-head">
+          <div>
+            <p class="section-label" id="genresLabel">Géneros</p>
+            <h2 id="catalogTitle">Películas destacadas</h2>
+          </div>
+          <div class="catalog-tools">
+            <form class="search-form" id="searchForm" role="search">
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Buscar película..."
+                aria-label="Buscar película"
+              />
+              <button id="searchButton" type="submit">Buscar</button>
+            </form>
+            <div class="filters" id="filters" aria-label="Filtros por género"></div>
+          </div>
+        </div>
+
+        <div class="content-frame">
+          <div class="spinner-wrap is-visible" id="spinner" aria-live="polite">
+            <span class="spinner" aria-hidden="true"></span>
+            <span id="spinnerText">Cargando películas...</span>
+          </div>
+          <div class="movie-grid" id="movieGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="movieModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <article class="modal-panel" aria-labelledby="modalTitle">
+        <button class="modal-close" id="movieCloseButton" type="button" data-close-modal aria-label="Cerrar modal">
+          &times;
+        </button>
+        <img class="modal-poster" id="modalPoster" alt="" />
+        <div class="modal-content">
+          <div class="modal-meta">
+            <span id="modalGenre"></span>
+            <span id="modalYear"></span>
+            <span id="modalRating"></span>
+          </div>
+          <h3 id="modalTitle"></h3>
+          <p id="modalDescription"></p>
+          <button class="primary-action" id="modalLike" type="button"></button>
+        </div>
+      </article>
+    </div>
+
+    <div class="modal" id="favoritesModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-favorites></div>
+      <article class="favorites-panel" aria-labelledby="favoritesTitle">
+        <button class="modal-close" id="favoritesCloseButton" type="button" data-close-favorites aria-label="Cerrar favoritos">
+          &times;
+        </button>
+        <div class="favorites-head">
+          <p class="section-label" id="favoritesEyebrow">Tus selecciones</p>
+          <h3 id="favoritesTitle">Películas favoritas</h3>
+        </div>
+        <div class="favorites-grid" id="favoritesGrid"></div>
+      </article>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
